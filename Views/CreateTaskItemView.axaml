@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:vm="using:TaskManager.ViewModels" mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:Class="TaskManager.Views.CreateTaskItemView" x:DataType="vm:CreateTaskItemViewModel">
+
+<Grid RowDefinitions="*, Auto">
+       <ScrollViewer Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0">
+                     <StackPanel Margin="10 10 0 0" Spacing="10" DockPanel.Dock="Top" Orientation="Vertical">
+                            <TextBlock>Title:</TextBlock>
+                            <TextBox Text="{Binding TaskTitle}" Watermark="Enter a task title..."/>
+
+                            <TextBlock>Description:</TextBlock>
+                            <TextBox AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding TaskDescription}" 
+                                   Watermark="Enter a task decription..."/>
+
+                            <TextBlock >Performer:</TextBlock>
+                            <ComboBox SelectedItem="{Binding TaskPerformer}" ItemsSource="{Binding Users}"/>
+
+                            <TextBlock>Planned time, hours:</TextBlock>
+                            <TextBox Text="{Binding TaskPlannedTime}"/>
+
+                            <TextBlock>Created date:</TextBlock>
+                            <DatePicker DayFormat="ddd dd" SelectedDate="{Binding TaskCreatedDate}" IsEnabled="False"/>
+
+                            <TextBlock>Status:</TextBlock>
+                            <ComboBox ItemsSource="{Binding Statuses}" SelectedItem="{Binding TaskStatus}"/>
+                     </StackPanel>
+       </ScrollViewer>
+
+              <StackPanel Grid.Row="1" Margin="8">
+                     <Button Command="{Binding SaveCommand}" VerticalAlignment="Center" 
+                            HorizontalAlignment="Center">Save</Button>
+              </StackPanel>
+</Grid>
+</UserControl>

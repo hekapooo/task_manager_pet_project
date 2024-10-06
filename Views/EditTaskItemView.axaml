@@ -1,0 +1,122 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManager.ViewModels"
+             xmlns:views="clr-namespace:TaskManager.Views"
+             xmlns:model="using:TaskManager.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManager.Views.EditTaskItemView"
+             x:DataType="vm:EditTaskItemViewModel">
+
+
+<Grid RowDefinitions="*, Auto">
+       <ScrollViewer Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0">
+                     <StackPanel Margin="10 10 0 0" Spacing="10" DockPanel.Dock="Top" Orientation="Vertical">
+                            <TextBlock>Name:</TextBlock>
+                            <TextBox Text="{Binding TaskTitle}" Watermark="Enter a task name..."/>
+
+                            <TextBlock>Description:</TextBlock>
+                            <TextBox AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding TaskDescription}" 
+                                   Watermark="Enter a task decription..."/>
+
+                            <TextBlock >Perfomer:</TextBlock>
+                            <ComboBox SelectedItem="{Binding TaskPerformer}" ItemsSource="{Binding Users}"/>
+
+                            <TextBlock>Planned time, hours:</TextBlock>
+                            <TextBox Text="{Binding TaskPlannedTime}" IsEnabled="False"/>
+
+                            <TextBlock>Spented time, hours:</TextBlock>
+                            <TextBox Text="{Binding TaskSpendTime}"/>
+
+                            <TextBlock>Created date:</TextBlock>
+                            <DatePicker DayFormat="ddd dd" SelectedDate="{Binding TaskCreatedDate}" IsEnabled="False"/>
+
+                            <TextBlock>Complete date:</TextBlock>
+                            <DatePicker DayFormat="ddd dd" SelectedDate="{Binding TaskCompleteDate}" IsEnabled="False"/>
+
+
+                            <TextBlock>Status:</TextBlock>
+                            <ComboBox ItemsSource="{Binding AllowedStatuses}" SelectedItem="{Binding TaskStatus}"/>
+                     </StackPanel>
+       </ScrollViewer>
+
+              <StackPanel Grid.Row="1" Margin="8">
+                     <Button Command="{Binding SaveCommand}" VerticalAlignment="Center" 
+                            HorizontalAlignment="Center">Save</Button>
+              </StackPanel>
+</Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <StackPanel> 
+
+              <TextBlock>Task name:</TextBlock>
+              <TextBox Text="{Binding TaskName}"/>
+              <TextBlock>Description:</TextBlock>
+              <TextBox Text="{Binding TaskDescription}"/>
+
+
+              <TextBlock>User:</TextBlock>
+
+
+              <ComboBox ItemsSource="{Binding Users}" SelectedItem="{Binding TaskPerfomer, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="model:User">
+                        <TextBlock Text="{Binding DisplayName}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+              </ComboBox>
+
+
+
+              <TextBlock>Planned time, hours:</TextBlock>
+              <TextBox Text="{Binding TaskPlannedTime}" IsEnabled="False"/>
+              <TextBlock>Spented time, hours:</TextBlock>
+              <TextBox Text="{Binding TaskSpentedTime}"/>
+              <TextBlock>Created date:</TextBlock>
+              <DatePicker DayFormat="ddd dd" SelectedDate="{Binding TaskCreatedDate}" IsEnabled="False"/>
+              <TextBlock>Complete date:</TextBlock>
+              <DatePicker DayFormat="ddd dd" SelectedDate="{Binding TaskCompletedDate}"/>
+              <TextBlock>Status:</TextBlock>
+              <ComboBox ItemsSource="{Binding AllowedStatuses}" SelectedItem="{Binding TaskStatus}"></ComboBox>
+
+
+              <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
+                <Button Command="{Binding SaveCommand}">Save</Button>
+              </StackPanel>
+            </StackPanel> -->
+
+
+
+</UserControl>
+
+
